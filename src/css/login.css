@@ -57,6 +57,10 @@
   cursor: pointer;
 }
 
+.login-button:hover {
+  background-color: #e23b2f;
+}
+
 .login-button:disabled {
   color: #aaa;
   background-color: #eee;
