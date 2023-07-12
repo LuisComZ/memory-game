@@ -17,11 +17,11 @@
 }
 
 .login-header img {
-  width: 100px;
+  width: 300px;
 }
 
 .login-header h1 {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
   font-size: 1.5em;
 
@@ -51,14 +51,14 @@
 
   font-size: 1em;
 
-  color: white;
-  background-color: #ee665c;
+  color: rgb(255, 255, 255);
+  background-color: #3fbde4;
 
   cursor: pointer;
 }
 
 .login-button:hover {
-  background-color: #e23b2f;
+  background-color: #538de4;
 }
 
 .login-button:disabled {
