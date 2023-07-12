@@ -17,12 +17,6 @@
 
   transition: all 400ms ease;
   transform-style: preserve-3d;
-
-  background-color: #333;
-}
-
-.reveal-card {
-  transform: rotateY(180deg);
 }
 
 .face {
@@ -32,6 +26,8 @@
   border-radius: 5px;
 
   position: absolute;
+
+  transition: all 400ms ease;
 
   background-size: cover;
   background-position: center;
@@ -46,3 +42,11 @@
   backface-visibility: hidden;
 }
 
+.reveal-card {
+  transform: rotateY(180deg);
+}
+
+.disabled-card {
+  filter: saturate(0);
+  opacity: 0.5;
+}

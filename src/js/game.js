@@ -18,11 +18,53 @@ function createElement(tag, className) {
   return element
 }
 
-function revealCard({ target }) {
-  target.parentNode.classList.add("reveal-card")
+let firstCard = ""
+let secondCard = ""
 
-  if (target.parentNode.className.includes("reveal-card")){
+function checkEndGame () {
+  const disabledCards = document.querySelectorAll(".disabled-card")
+
+  if (disabledCards.length === 20) {
+    alert("Congratulations! You did it!")
+  }
+}
+
+function checkCards() {
+  const firstCharacter = firstCard.getAttribute("data-character")
+  const secondCharacter = secondCard.getAttribute("data-character")
+
+  if (firstCharacter === secondCharacter) {
+    firstCard.firstChild.classList.add("disabled-card")
+    secondCard.firstChild.classList.add("disabled-card")
+
+    firstCard = ""
+    secondCard = ""
+
+    checkEndGame()
+  } else {
+    setTimeout(function () {
+      firstCard.classList.remove("reveal-card")
+      secondCard.classList.remove("reveal-card")
+
+      firstCard = ""
+      secondCard = ""
+    }, 500)
+  }
+}
+
+function revealCard({ target }) {
+  if (target.parentNode.className.includes("reveal-card")) {
     return
+  }
+
+  if (firstCard === "") {
+    target.parentNode.classList.add("reveal-card")
+    firstCard = target.parentNode
+  } else if (secondCard === "") {
+    target.parentNode.classList.add("reveal-card")
+    secondCard = target.parentNode
+
+    checkCards()
   }
 }
 
@@ -37,6 +79,7 @@ function createCard(character) {
   card.appendChild(back)
 
   card.addEventListener("click", revealCard)
+  card.setAttribute("data-character", character) //"data-character" cria um atributo e seu valor "character" é o nome do personagem em específico
 
   return card
 }
@@ -46,7 +89,7 @@ function loadGame() {
 
   const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5)
 
-  duplicateCharacters.forEach(function (character) {
+  shuffledArray.forEach(function (character) {
     const card = createCard(character)
     grid.appendChild(card)
   })
