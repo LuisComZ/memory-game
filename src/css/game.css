@@ -21,7 +21,7 @@
   background-color: #333;
 }
 
-.card:hover {
+.reveal-card {
   transform: rotateY(180deg);
 }
 
@@ -38,7 +38,6 @@
 }
 
 .front {
-  background-image: url(../images/beth.png);
   transform: rotateY(180deg);
 }
 
