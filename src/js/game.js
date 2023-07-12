@@ -27,7 +27,7 @@ function checkEndGame () {
   const disabledCards = document.querySelectorAll(".disabled-card")
 
   if (disabledCards.length === 20) {
-    alert(`Congratulations, ${spanPlayer.innerHTML}! You did it! Your time was: ${timer.innerHTML}`)
+    alert(`Congratulations, ${spanPlayer.innerHTML}! You did it! You took ${timer.innerHTML} seconds to finish.`)
     clearInterval(this.loop)
   }
 }
