@@ -1,4 +1,6 @@
 const grid = document.querySelector(".grid")
+const spanPlayer = document.querySelector(".player")
+const timer = document.querySelector(".timer")
 const characters = [
   "beth",
   "jerry",
@@ -25,7 +27,8 @@ function checkEndGame () {
   const disabledCards = document.querySelectorAll(".disabled-card")
 
   if (disabledCards.length === 20) {
-    alert("Congratulations! You did it!")
+    alert(`Congratulations, ${spanPlayer.innerHTML}! You did it! Your time was: ${timer.innerHTML}`)
+    clearInterval(this.loop)
   }
 }
 
@@ -95,4 +98,16 @@ function loadGame() {
   })
 }
 
-loadGame()
+function startTimer () {
+  this.loop = setInterval(function () {
+    const currentTime = timer.innerHTML
+    timer.innerHTML = Number(currentTime) + 1
+  }, 1000)
+}
+
+onload = () => {
+  spanPlayer.innerHTML = localStorage.getItem("player")
+
+  startTimer()
+  loadGame()
+}
